@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/bottom_menu_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:orientation="vertical"
+        android:background="@color/white"
+        app:behavior_hideable="true"
+        app:behavior_peekHeight="40dp"
+        app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center|top"
+            android:background="@color/transparent"
+            android:orientation="horizontal">
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="40dp"
+                android:layout_weight="1"
+                android:gravity="center|start">
+
+                <androidx.appcompat.widget.AppCompatImageButton
+                    android:id="@+id/open_bottom_sheet"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_margin="5dp"
+                    android:background="@color/transparent"
+                    android:gravity="center"
+                    android:padding="5dp"
+                    android:src="@drawable/more_icon" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="top"
+            android:orientation="vertical"
+            android:padding="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent">
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_height="100dp"
+                android:layout_width="match_parent"
+                android:layout_gravity="start"
+                android:gravity="center"
+                android:layout_margin="3dp"
+                android:background="@drawable/round_section_bg"
+                android:orientation="horizontal">
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center|start"
+                    android:gravity="start"
+                    android:padding="10dp"
+                    android:text="Switch Theme Sea/forest"
+                    android:layout_weight="1"/>
+
+                <View
+                    android:layout_height="50dp"
+                    android:layout_width="0.5dp"
+                    android:layout_margin="5dp"
+                    android:layout_gravity="center"
+                    android:background="@color/white"/>
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:layout_gravity="center|start"
+                    android:gravity="center|start"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <androidx.appcompat.widget.SwitchCompat
+                        android:id="@+id/switch_compat"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:checked="false"
+                        android:text="Change Theme"
+                        android:textOff="Sea"
+                        android:textOn="Forest"
+                        app:showText="true"/>
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_height="100dp"
+                android:layout_width="match_parent"
+                android:layout_gravity="start"
+                android:gravity="center"
+                android:layout_margin="3dp"
+                android:background="@drawable/round_section_bg"
+                android:orientation="horizontal">
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center|start"
+                    android:gravity="start"
+                    android:text="theme"
+                    android:layout_weight="1"/>
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:layout_gravity="center|start"
+                    android:gravity="center|start"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/button_test"
+                        android:layout_width="wrap_content"
+                        android:layout_height="40dp"
+                        android:background="@color/sunny"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:text="test shiet"/>
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_height="100dp"
+                android:layout_width="match_parent"
+                android:layout_gravity="start"
+                android:gravity="center"
+                android:layout_margin="3dp"
+                android:background="@drawable/round_section_bg"
+                android:orientation="horizontal">
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center|start"
+                    android:gravity="start"
+                    android:text="theme"
+                    android:layout_weight="1"/>
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:layout_gravity="center|start"
+                    android:gravity="center|start"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <androidx.appcompat.widget.SwitchCompat
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:checked="false"
+                        android:text="Change Theme"
+                        android:textOff="Sea"
+                        android:textOn="Forest"
+                        app:showText="true"/>
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_height="100dp"
+                android:layout_width="match_parent"
+                android:layout_gravity="start"
+                android:gravity="center"
+                android:layout_margin="3dp"
+                android:background="@drawable/round_section_bg"
+                android:orientation="horizontal">
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center|start"
+                    android:gravity="start"
+                    android:text="theme"
+                    android:layout_weight="1"/>
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:layout_gravity="center|start"
+                    android:gravity="center|start"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <androidx.appcompat.widget.SwitchCompat
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:checked="false"
+                        android:text="Change Theme"
+                        android:textOff="Sea"
+                        android:textOn="Forest"
+                        app:showText="true"/>
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center|bottom"
+            android:background="@color/transparent"
+            android:orientation="horizontal">
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center|right">
+
+                <androidx.appcompat.widget.AppCompatImageButton
+                    android:id="@+id/close_bottom_sheet"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_margin="5dp"
+                    android:background="@color/transparent"
+                    android:gravity="center"
+                    android:padding="5dp"
+                    android:src="@drawable/close_icon_"
+                    android:visibility="invisible" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <import type="android.text.TextUtils" />
+
+        <variable
+            name="weatherViewModel"
+            type="com.app.presentation.viewModels.WeatherViewModel" />
+    </data>
+</layout>

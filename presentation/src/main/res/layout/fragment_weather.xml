@@ -1,0 +1,341 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="android.view.View" />
+        <import type="android.text.TextUtils" />
+
+        <variable
+            name="weatherViewModel"
+            type="com.app.presentation.viewModels.WeatherViewModel" />
+    </data>
+
+    <FrameLayout
+        android:id="@+id/main_weather_frament"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".views.ApplicationActivity">
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ProgressBar
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_gravity="center"
+                android:visibility="@{safeUnbox(weatherViewModel.observableLoadingState) ? View.VISIBLE : View.GONE}" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="top"
+            android:orientation="vertical">
+
+
+
+                <androidx.appcompat.widget.Toolbar
+                    android:id="@+id/toolbar"
+                    android:layout_width = "match_parent"
+                    android:background="@color/transparent"
+                    app:popupTheme="@style/Theme.WeatherGuard.PopupOverlay"
+                    android:layout_height = "?attr/actionBarSize" />
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/top_"
+                android:layout_height="match_parent"
+                android:layout_width="match_parent"
+                android:layout_weight="1"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:orientation="vertical">
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:layout_gravity="center"
+                    android:text="@{weatherViewModel.observableWeatherUpdate.main.temperature.toString().concat(weatherViewModel.temperatureSymbol)}"
+                    android:textSize="35sp"
+                    android:layout_margin="5dp"
+                    tools:ignore="RtlHardcoded" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:layout_margin="5dp"
+                    android:layout_gravity="center"
+                    android:text="@{weatherViewModel.observableWeatherUpdate.weather.get(0).main}"
+                    android:textSize="25sp"
+                    android:textAllCaps="true"
+                    tools:ignore="RtlHardcoded" />
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/infoLayouts"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/rainy_drawable"
+                android:gravity="center|top"
+                android:orientation="vertical">
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:orientation="horizontal"
+                    android:paddingLeft="16dp"
+                    android:paddingRight="16dp"
+                    android:layout_margin="5dp"
+                    android:layout_gravity="top|center"
+                    android:gravity="center">
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textColor="@color/white"
+                        android:gravity="center|left"
+                        android:layout_gravity="center"
+                        android:text="@{weatherViewModel.observableWeatherUpdate.main.minimumTemperature.toString().concat(weatherViewModel.temperatureSymbol).concat(weatherViewModel.minTemp)}"
+                        android:textSize="12sp"
+                        tools:ignore="RtlHardcoded" />
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textColor="@color/white"
+                        android:gravity="center"
+                        android:layout_gravity="center"
+                        android:text="@{weatherViewModel.observableWeatherUpdate.main.temperature.toString().concat(weatherViewModel.temperatureSymbol).concat(weatherViewModel.currentTemp)}"
+                        android:textSize="12sp"
+                        tools:ignore="RtlHardcoded" />
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center|right"
+                        android:textColor="@color/white"
+                        android:layout_gravity="center"
+                        android:text="@{weatherViewModel.observableWeatherUpdate.main.maximumTemperature.toString().concat(weatherViewModel.temperatureSymbol).concat(weatherViewModel.maxTemp)}"
+                        android:textSize="12sp"
+                        tools:ignore="RtlHardcoded" />
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+                <View
+                    android:layout_height="0.5dp"
+                    android:layout_width="match_parent"
+                    android:background="@color/white"/>
+
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:orientation="horizontal"
+                    android:paddingLeft="16dp"
+                    android:paddingRight="16dp"
+                    android:layout_margin="5dp"
+                    android:layout_gravity="top|center"
+                    android:gravity="center">
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textColor="@color/white"
+                        android:gravity="center|left"
+                        android:layout_gravity="center"
+                        android:text="@{weatherViewModel.observableNextFiveDays.get(0)}"
+                        android:textSize="12sp"
+                        tools:ignore="RtlHardcoded" />
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        app:imageResource="@{weatherViewModel.observableWeatherIcons.get(0)}"
+                        android:layout_gravity="center"
+                        tools:ignore="RtlHardcoded" />
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center|right"
+                        android:textColor="@color/white"
+                        android:layout_gravity="center"
+                        android:text="@{weatherViewModel.observableWeatherForecast.list.get(0).main.temperature.toString().concat(weatherViewModel.temperatureSymbol)}"
+                        android:textSize="12sp"
+                        tools:ignore="RtlHardcoded" />
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:orientation="horizontal"
+                    android:paddingLeft="16dp"
+                    android:paddingRight="16dp"
+                    android:layout_margin="5dp"
+                    android:layout_gravity="top|center"
+                    android:gravity="center">
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textColor="@color/white"
+                        android:gravity="center|left"
+                        android:layout_gravity="center"
+                        android:text="@{weatherViewModel.observableNextFiveDays.get(1)}"
+                        android:textSize="12sp"
+                        tools:ignore="RtlHardcoded" />
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        app:imageResource="@{weatherViewModel.observableWeatherIcons.get(1)}"
+                        android:layout_gravity="center"
+                        tools:ignore="RtlHardcoded"/>
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center|right"
+                        android:textColor="@color/white"
+                        android:layout_gravity="center"
+                        android:text="@{weatherViewModel.observableWeatherForecast.list.get(1).main.temperature.toString().concat(weatherViewModel.temperatureSymbol)}"
+                        android:textSize="12sp"
+                        tools:ignore="RtlHardcoded"/>
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:orientation="horizontal"
+                    android:paddingLeft="16dp"
+                    android:paddingRight="16dp"
+                    android:layout_margin="5dp"
+                    android:layout_gravity="top|center"
+                    android:gravity="center">
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textColor="@color/white"
+                        android:gravity="center|left"
+                        android:layout_gravity="center"
+                        android:text="@{weatherViewModel.observableNextFiveDays.get(2)}"
+                        android:textSize="12sp"
+                        tools:ignore="RtlHardcoded"/>
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        app:imageResource="@{weatherViewModel.observableWeatherIcons.get(2)}"
+                        android:layout_gravity="center"
+                        tools:ignore="RtlHardcoded" />
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center|right"
+                        android:textColor="@color/white"
+                        android:layout_gravity="center"
+                        android:text="@{weatherViewModel.observableWeatherForecast.list.get(2).main.temperature.toString().concat(weatherViewModel.temperatureSymbol)}"
+                        android:textSize="12sp"
+                        tools:ignore="RtlHardcoded"/>
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:orientation="horizontal"
+                    android:paddingLeft="16dp"
+                    android:paddingRight="16dp"
+                    android:layout_margin="5dp"
+                    android:layout_gravity="top|center"
+                    android:gravity="center">
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textColor="@color/white"
+                        android:gravity="center|left"
+                        android:layout_gravity="center"
+                        android:text="@{weatherViewModel.observableNextFiveDays.get(3)}"
+                        android:textSize="12sp"
+                        tools:ignore="RtlHardcoded" />
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        app:imageResource="@{weatherViewModel.observableWeatherIcons.get(3)}"
+                        android:layout_gravity="center"
+                        tools:ignore="RtlHardcoded" />
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center|right"
+                        android:textColor="@color/white"
+                        android:layout_gravity="center"
+                        android:text="@{weatherViewModel.observableWeatherForecast.list.get(3).main.temperature.toString().concat(weatherViewModel.temperatureSymbol)}"
+                        android:textSize="12sp"
+                        tools:ignore="RtlHardcoded" />
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:orientation="horizontal"
+                    android:paddingLeft="16dp"
+                    android:paddingRight="16dp"
+                    android:layout_margin="5dp"
+                    android:layout_gravity="top|center"
+                    android:gravity="center">
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textColor="@color/white"
+                        android:gravity="center|left"
+                        android:layout_gravity="center"
+                        android:text="@{weatherViewModel.observableNextFiveDays.get(4)}"
+                        android:textSize="12sp"
+                        tools:ignore="RtlHardcoded" />
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        app:imageResource="@{weatherViewModel.observableWeatherIcons.get(4)}"
+                        android:src="@drawable/rain"
+                        android:layout_gravity="center"
+                        tools:ignore="RtlHardcoded" />
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center|right"
+                        android:textColor="@color/white"
+                        android:layout_gravity="center"
+                        android:text="@{weatherViewModel.observableWeatherForecast.list.get(4).main.temperature.toString().concat(weatherViewModel.temperatureSymbol)}"
+                        android:textSize="12sp"
+                        tools:ignore="RtlHardcoded" />
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+    </FrameLayout>
+</layout>

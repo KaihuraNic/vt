@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="forestCloudy" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="colorAccent">@color/cardview_light_background</item>
+        <item name="android:windowBackground">@drawable/forest_cloudy</item>
+    </style>
+
+    <!--FOREST STYLES-->
+    <style name="forest_rainy" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="background">@drawable/forest_rainy</item>
+    </style>
+
+    <style name="forest_cloudy" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="android:windowBackground">@drawable/forest_cloudy</item>
+    </style>
+
+    <style name="forest_sunny" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="android:windowBackground">@drawable/forest_sunny</item>
+    </style>
+
+    <!--SEA THEMES-->
+    <style name="sea_rainy" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="android:windowBackground">@drawable/sea_rainy</item>
+    </style>
+
+    <style name="sea_cloudy" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="android:windowBackground">@drawable/sea_cloudy</item>
+    </style>
+
+    <style name="sea_sunny" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="background">@drawable/sea_sunnypng</item>
+    </style>
+
+
+</resources>

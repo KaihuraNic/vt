@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_nav_graph"
+    app:startDestination="@id/weatherFragment">
+
+    <fragment
+        android:id="@+id/weatherFragment"
+        android:name="com.app.presentation.views.WeatherFragment"
+        android:label="fragment_user_search"
+        tools:layout="@layout/fragment_weather">
+        <action
+            android:id="@+id/action_weatherFragment_to_map_fragment"
+            app:destination="@id/mapsFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/map_fragment"
+        android:name="com.app.presentation.views.CitiesFragment"
+        android:label="fragment_cities"
+        tools:layout="@layout/fragment_cities"/>
+    <fragment
+        android:id="@+id/mapsFragment"
+        android:name="com.app.presentation.MapsFragment"
+        android:label="fragment_maps"
+        tools:layout="@layout/fragment_maps" />
+    <fragment
+        android:id="@+id/nav_home"
+        android:name="com.app.presentation.views.ui.home.HomeFragment"
+        android:label="@string/menu_home"
+        tools:layout="@layout/fragment_home" />
+
+    <fragment
+        android:id="@+id/nav_gallery"
+        android:name="com.app.presentation.views.ui.gallery.GalleryFragment"
+        android:label="@string/menu_gallery"
+        tools:layout="@layout/fragment_gallery" />
+
+    <fragment
+        android:id="@+id/nav_slideshow"
+        android:name="com.app.presentation.views.ui.slideshow.SlideshowFragment"
+        android:label="@string/menu_slideshow"
+        tools:layout="@layout/fragment_slideshow" />
+
+</navigation>
