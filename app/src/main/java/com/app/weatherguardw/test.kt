@@ -12,7 +12,7 @@ import androidx.navigation.ui.setupWithNavController
 import com.app.weatherguardw.databinding.ActivityTestBinding
 import com.google.android.material.navigation.NavigationView
 import com.google.android.material.snackbar.Snackbar
-
+it
 class test : AppCompatActivity() {
 
     private lateinit var appBarConfiguration: AppBarConfiguration
